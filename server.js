@@ -127,7 +127,7 @@ app.post("/reviews", (req, res)=>{
 app.put("/reviews/:id", (req, res)=>{
     res.json({
         success:true,
-        msg:`aqui se modificara ña review cuyo id es ${req.params.id}`
+        msg:`aqui se modificara la review cuyo id es ${req.params.id}`
     })
 })
 
@@ -149,6 +149,37 @@ app.get("/users", (req, res)=>{
     })
 })
 
+//traer usuario por id
+app.get("/users/:id", (req, res)=>{
+    res.json({
+        success:true,
+        msg:`aqui se mostrara el usuario cuyo id es ${req.params.id}`
+    })
+})
+
+//crear un usuario
+app.post("/users", (req, res)=>{
+    res.json({
+        success:true,
+        msg:"aqui se creara un nuevo usuario"
+    })
+})
+
+//modificar cursos cursos por id
+app.put("/users/:id", (req, res)=>{
+    res.json({
+        success:true,
+        msg:`aqui se modificara el usuario cuyo id es ${req.params.id}`
+    })
+})
+
+//eliminar una review
+app.delete("/users/:id", (req, res)=>{
+    res.json({
+        success:true,
+        msg:`aqui se eliminara el usuario cuyo id es ${req.params.id}`
+    })
+})
 
 
 //un puerto de ejecucion
