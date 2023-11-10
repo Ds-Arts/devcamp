@@ -5,6 +5,9 @@ const conectarDB = require('./config/db')
 
 //dependencias de rutas
 const bootcampRoutes = require('./routes/bootcampsRoutes')
+const courseRoutes = require('./routes/courseRoutes')
+const reviewRoutes = require('./routes/reviewRoutes')
+
 
 //vincular el archivo .env
 dotenv.config(
@@ -24,90 +27,12 @@ app.use('/api/v1/devcamp/bootcamps',
         bootcampRoutes)
 
 //CURSOS
-
-//traer todos los cursos
-app.get("/courses", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se mostraran todos los cursos"
-    })
-})
-
-//traer cursos por id
-app.get("/courses/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se mostrara el curso cuyo id es ${req.params.id}`
-    })
-})
-
-
-//crear un curso
-app.post("/courses", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se creara un nuevo curso"
-    })
-})
-
-//modificar cursos cursos por id
-app.put("/courses/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se modificara el curso cuyo id es ${req.params.id}`
-    })
-})
-
-//eliminar un curso
-app.delete("/courses/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se eliminara el curso cuyo id es ${req.params.id}`
-    })
-})
-
+app.use('/api/v1/devcamp/courses',
+        courseRoutes)
 
 //REVIEWS
-//traer todas las reviews
-app.get("/reviews", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se mostraran todas las reviews"
-    })
-})
-
-//traer review por id
-app.get("/reviews/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se mostrara la review cuyo id es ${req.params.id}`
-    })
-})
-
-//crear una review
-app.post("/reviews", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se creara una nueva review"
-    })
-})
-
-//modificar cursos cursos por id
-app.put("/reviews/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se modificara la review cuyo id es ${req.params.id}`
-    })
-})
-
-//eliminar una review
-app.delete("/reviews/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se eliminara la review cuyo id es ${req.params.id}`
-    })
-})
-
+app.use('/api/v1/devcamp/reviews',
+        reviewRoutes)
 
 //USUARIOS
 //traer todos los usuarios
