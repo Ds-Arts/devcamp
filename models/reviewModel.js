@@ -4,6 +4,10 @@ const ReviewSchema = new mongoose.Schema(
     {
         "title":{
             type: String,
+            unique: [
+                true,
+                "titulo ya esta registrado"
+            ],
             required: [true,
             "Titulo requerido"]
         }, 
@@ -16,10 +20,13 @@ const ReviewSchema = new mongoose.Schema(
             type: Number,
             required: [
                 true],
-            minlength:[
-                1,
-                "el rating minimo debe tener un numero"                
-            ]
+                max:[
+                    1,
+                    "telefono debe de ser de 1 digitos" ],
+                min:[
+                    15,  
+                    "telefono debe de ser de minimo 5 digitos"             
+                ]
         }
     }
 )

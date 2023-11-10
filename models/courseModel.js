@@ -4,6 +4,10 @@ const CourseSchema = new mongoose.Schema(
     {
         "title":{
             type: String,
+            unique: [
+                true,
+                "titulo ya esta registrado"
+            ],
             required: [true,
             "Titulo requerido"]
         },
@@ -23,12 +27,18 @@ const CourseSchema = new mongoose.Schema(
             required: [
                 true]          
         },
-       "minimumSkil":{
-            type: {Number},
+       "minimumSkilL":{
+            type: [String],
+            enum:
+            [
+                "Beginner",
+                "Intermediate",
+                "Advanced"
+            ],
             required: [
                 true]            
        },
-       "created":{
+       "createdAt":{
         type: Date,
         required:[true,"fecha requerida"]
 
