@@ -7,7 +7,7 @@ const conectarDB = require('./config/db')
 const bootcampRoutes = require('./routes/bootcampsRoutes')
 const courseRoutes = require('./routes/courseRoutes')
 const reviewRoutes = require('./routes/reviewRoutes')
-
+const userRoutes = require('./routes/userRoutes')
 
 //vincular el archivo .env
 dotenv.config(
@@ -34,47 +34,9 @@ app.use('/api/v1/devcamp/courses',
 app.use('/api/v1/devcamp/reviews',
         reviewRoutes)
 
-//USUARIOS
-//traer todos los usuarios
-app.get("/users", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se mostraran todos los usuarios"
-    })
-})
-
-//traer usuario por id
-app.get("/users/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se mostrara el usuario cuyo id es ${req.params.id}`
-    })
-})
-
-//crear un usuario
-app.post("/users", (req, res)=>{
-    res.json({
-        success:true,
-        msg:"aqui se creara un nuevo usuario"
-    })
-})
-
-//modificar usuario por id
-app.put("/users/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se modificara el usuario cuyo id es ${req.params.id}`
-    })
-})
-
-//eliminar una usuario
-app.delete("/users/:id", (req, res)=>{
-    res.json({
-        success:true,
-        msg:`aqui se eliminara el usuario cuyo id es ${req.params.id}`
-    })
-})
-
+//USERS
+app.use('/api/v1/devcamp/auth',
+        userRoutes)
 
 //un puerto de ejecucion
 app.listen(process.env.PUERTO , ()=>{

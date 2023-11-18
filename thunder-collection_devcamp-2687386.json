@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "devcamp-2687386",
-    "dateExported": "2023-11-10T23:42:39.976Z",
+    "dateExported": "2023-11-18T00:00:35.866Z",
     "version": "1.1",
     "folders": [
         {
@@ -87,6 +87,30 @@
             "tests": []
         },
         {
+            "_id": "ecd9c3a8-a8fd-4096-b1eb-730e25146b01",
+            "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
+            "containerId": "8ac7e3b5-e4cd-4249-bf0f-0d24f3bd4af3",
+            "name": "login de usuario",
+            "url": "http://127.0.0.1:5000/api/v1/devcamp/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-11-03T19:15:44.890Z",
+            "modified": "2023-11-18T00:00:20.313Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"ronaldo@soy.sena.com\",  \n  \"password\":\"hola_C\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
             "_id": "1a77aa15-1879-4f1b-b059-3f85aa5e9cef",
             "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
             "containerId": "e9c7e93f-89c7-47d9-88be-8515493bea6a",
@@ -148,6 +172,30 @@
             "body": {
                 "type": "json",
                 "raw": "{\n  \"title\":\"Java basico\" ,\n  \"description\": \"traer a java desde la consola\",\n  \"weeks\": 12,\n  \"tuition\": 3000,\n  \"minimumSkilL\":\"Beginner\",\n  \"createdAt\": \"2023-01-01\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "97b6ac99-9b96-4106-b352-8cf9f592c717",
+            "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
+            "containerId": "8ac7e3b5-e4cd-4249-bf0f-0d24f3bd4af3",
+            "name": "registrar un nuevbo usuario Copy",
+            "url": "http://127.0.0.1:5000/api/v1/devcamp/auth/register",
+            "method": "POST",
+            "sortNum": 45000,
+            "created": "2023-11-03T19:15:44.891Z",
+            "modified": "2023-11-17T23:56:10.005Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"pana\",\n  \"email\":\"ronaldo@soy.sena.com\",\n  \"password\":\"hola_Carlos\",\n  \"role\":\"admin\"\n}",
                 "form": []
             },
             "tests": []
@@ -281,20 +329,6 @@
             "tests": []
         },
         {
-            "_id": "ecd9c3a8-a8fd-4096-b1eb-730e25146b01",
-            "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
-            "containerId": "8ac7e3b5-e4cd-4249-bf0f-0d24f3bd4af3",
-            "name": "traer usuarios por id Copy",
-            "url": "http://127.0.0.1:5000/users/1",
-            "method": "GET",
-            "sortNum": 67500,
-            "created": "2023-11-03T19:15:44.890Z",
-            "modified": "2023-11-03T19:15:44.890Z",
-            "headers": [],
-            "params": [],
-            "tests": []
-        },
-        {
             "_id": "2628a233-4ab6-4976-9c4e-31913f758089",
             "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
             "containerId": "d77b4bad-c273-421b-a729-f581419730b9",
@@ -342,20 +376,6 @@
             "sortNum": 80000,
             "created": "2023-11-03T19:15:44.887Z",
             "modified": "2023-11-10T22:23:11.171Z",
-            "headers": [],
-            "params": [],
-            "tests": []
-        },
-        {
-            "_id": "97b6ac99-9b96-4106-b352-8cf9f592c717",
-            "colId": "5c23d348-779d-4f76-bb4d-595edcfca89c",
-            "containerId": "8ac7e3b5-e4cd-4249-bf0f-0d24f3bd4af3",
-            "name": "registrar un nuevbo usuario Copy",
-            "url": "http://127.0.0.1:5000/users",
-            "method": "POST",
-            "sortNum": 80000,
-            "created": "2023-11-03T19:15:44.891Z",
-            "modified": "2023-11-03T19:15:44.891Z",
             "headers": [],
             "params": [],
             "tests": []
