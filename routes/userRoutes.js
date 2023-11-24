@@ -37,9 +37,12 @@ router.get("/:id", async (req, res)=>{
 router.post("/register", async (req, res)=>{
     try {
         const user = await UserModel.create(req.body)
+        //crear token
+        const token= user.generarJWT()
         res.status(201).json({
             success:true,
-            data:user
+            data:user,
+            token_jwt:token
         })
     } catch (error) {
         res.status(400)
@@ -68,14 +71,24 @@ router.post("/login", async (req, res)=>{
                 message:"El email o la contraseña son incorrectos"
             })
         }else{
+            const isMatch= await user.compararPassword(password)
+            if(isMatch){
+                const token= user.generarJWT()   
+                //crear opciones para creacionde cookie
+                const opcions={
+                    expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+                    httOnly: true
+                }
 
-            if(await user.compararPassword(password)){
-                return res.status(200)
-                    .json({
-                        success:true,
-                        message: "ususario logeado correctamente",
-                        data:user
-                    })
+                    return res
+                        .status(200)
+                        .cookie('token', token, opcions)
+                        .json({
+                            success:true,
+                            message: "ususario logeado correctamente",
+                            data:user,
+                            token_jwt:token
+                        })
                 
             }else{
                 res.status(400).json({

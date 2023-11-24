@@ -44,6 +44,7 @@ const UserSchema = new mongoose.Schema(
     }
 )
 
+
 UserSchema.pre('save', async function(){
     //generar la sal
     const sal=await bcryptjs.genSalt(10,this.password)
@@ -54,6 +55,20 @@ UserSchema.pre('save', async function(){
 //comparar base de datos del password con los del body
 UserSchema.methods.compararPassword = async function( password){
     return bcryptjs.compare( password, this.password)
+}
+
+//Metodo para crear el jwt
+UserSchema.methods.generarJWT= function(){
+    return jwt.sign({
+            id:this._id,
+            name: this.name,
+            email:this.email
+                    },
+            process.env.JWT_SECRET_KEY,
+        {
+            expiresIn: process.env.JWT_EXPIRE
+        }
+                    )
 }
 module.exports = mongoose.model("User", 
                                 UserSchema)
