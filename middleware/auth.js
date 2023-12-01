@@ -4,7 +4,7 @@ const userModel = require('../models/userModel')
 //usuarioa no logueados
 
 exports.protect= async(req,res,next) => {
-
+try {
     let token 
     //1. verificar si existe el header 'authorization'
     if(req.headers.authorization && 
@@ -21,8 +21,8 @@ exports.protect= async(req,res,next) => {
                 .status(401)
                 .json(
             {
-                uccess:false,
-                message:"token invalido"
+                success:false,
+                message:"USUARIO NO AUTORIZADO"
             }
         )
     }else{
@@ -34,10 +34,30 @@ exports.protect= async(req,res,next) => {
         next()
         
     }
+
+} catch (error) {
+    res.status(500).json({
+        success:false,
+        msg: error.message
+    })
+}
+
 }
 
 
 //middleware para proteger usuarios con un rol especifico
-exports.authorize= async(req,res,next) => {
-
+exports.authorize=(role) => {
+    return async(req,res,next) =>{
+        //comparar si el tol del parametro dado  es igual al rol del usuario
+        if (req.user.role !== role ) {
+            res
+            .status(401)
+            .json({
+                success:false,
+                msg: "ROL NO AUTORIZADO"
+            })
+        } else {
+            next()
+        }
+    }
 }

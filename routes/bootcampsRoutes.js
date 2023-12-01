@@ -82,7 +82,9 @@ router.get("/:id", async (req, res)=>{
 })
 
 //crear un bootcamp (una promesa)
-router.post("/",protect, async (req, res)=>{
+router.post("/",protect,
+                authorize("publisher"), 
+                async (req, res)=>{
     try{
         const newBootcamp =
         await BootcampModel.create(req.body)
